@@ -1,0 +1,13 @@
+'use strict';
+const test=require('node:test');const assert=require('node:assert/strict');
+const {questions,maxPoints}=require('../src/question-bank');const {gradeAnswer,sanitize,validate}=require('../src/grader');
+const find=id=>questions.find(q=>q.id===id);
+test('12 questions, 20 points, identifiants uniques',()=>{assert.equal(questions.length,12);assert.equal(maxPoints,20);assert.equal(new Set(questions.map(q=>q.id)).size,questions.length)});
+test('les réponses ne transitent pas dans la banque publique',()=>{for(const q of questions){const pub=sanitize(q);for(const field of ['answer','criteria','explanation','expected']) assert.equal(Object.hasOwn(pub,field),false)}});
+test('choix unique juste et faux',()=>{assert.equal(gradeAnswer(find('q01'),'a').earned,1);assert.equal(gradeAnswer(find('q01'),'b').earned,0)});
+test('QCM multiple : exact, partiel et choix incorrect',()=>{assert.equal(gradeAnswer(find('q02'),['a','b','d']).earned,2);assert.ok(gradeAnswer(find('q02'),['a','b']).earned>0);assert.equal(gradeAnswer(find('q02'),['c']).earned,0)});
+test('champ de référence et casse',()=>{assert.equal(gradeAnswer(find('q03'),'productId').earned,1);assert.equal(gradeAnswer(find('q03'),'ProductID').earned,1)});
+test('saisie libre : modèle proposé',()=>{const g=gradeAnswer(find('q06'),'J’intègre specs dans le produit ; les avis vont dans une collection reviews séparée car ils deviennent nombreux et sont paginés.');assert.equal(g.earned,3)});
+test('requête MongoDB : complète et partielle',()=>{const q=find('q10');assert.equal(gradeAnswer(q,'db.reviews.find({productId:101}).sort({createdAt:-1}).limit(10)').earned,3);assert.ok(gradeAnswer(q,'db.reviews.find({productId:101})').earned<3)});
+test('intégrité référentielle : critères',()=>{const g=gradeAnswer(find('q11'),'MongoDB ne vérifie pas automatiquement la clé étrangère. Il faut vérifier que le produit existe avant d’insérer un avis.');assert.equal(g.earned,2)});
+test('validation des entrées',()=>{assert.equal(validate(find('q01'),'invalid'),false);assert.equal(validate(find('q02'),['a','xyz']),false);assert.equal(validate(find('q10'),'db.reviews.find({})'),true)});

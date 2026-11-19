@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#12384A">
+  <meta name="description" content="Évaluation formative interactive en Big Data — relations, Embedding et Referencing MongoDB, Licence IoT 1 GLSI, ISIMA.">
+  <title>Évaluation Big Data — ISIMA | Licence IoT 1 GLSI</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <script defer src="/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <header class="site-header">
+    <div class="header-inner shell">
+      <div class="institution-group" aria-label="Établissement">
+        <div class="logo-card isima"><img src="/assets/logo-isima.png" alt="Logo ISIMA — Institut Supérieur d'Informatique de Mahdia"></div>
+        <span class="logo-separator" aria-hidden="true"></span>
+        <div class="logo-card university"><img src="/assets/logo-universite-monastir.png" alt="Logo Université de Monastir"></div>
+        <div class="institution-caption"><strong>ISIMA</strong><span>Université de Monastir</span></div>
+      </div>
+      <div class="header-course"><span class="header-kicker">ESPACE PÉDAGOGIQUE</span><strong>Big Data <span class="dot">·</span> Licence IoT 1 GLSI</strong></div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="landing" class="landing shell" aria-labelledby="landing-title">
+      <div class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> ÉVALUATION FORMATIVE <span class="eyebrow-number">N° 01</span></div>
+          <h1 id="landing-title">Les données ont des liens.<br><em>À vous de les comprendre.</em></h1>
+          <p class="hero-lead">Des tables SQL aux collections MongoDB : vérifiez votre maîtrise des relations, de l’imbrication et du référencement à travers des situations concrètes.</p>
+          <div class="hero-stats" aria-label="Informations sur l'évaluation">
+            <div><strong>30<span> min</span></strong><small>Temps imparti</small></div>
+            <div><strong>12</strong><small>Questions</small></div>
+            <div><strong>20<span> pts</span></strong><small>Barème</small></div>
+          </div>
+        </div>
+        <div class="hero-image"><img src="/assets/hero-relations.png" alt="Illustration isométrique d’une fiche produit liée à des avis dans une base documentaire"></div>
+      </div>
+
+      <div class="landing-grid">
+        <article class="start-panel" aria-labelledby="start-heading">
+          <div class="section-overline">AVANT DE COMMENCER</div>
+          <h2 id="start-heading">Une séance pour vérifier, comprendre et progresser.</h2>
+          <p class="supportive">Les questions se corrigent immédiatement. Une indication est disponible à chaque étape. L'objectif est de comprendre les choix, pas seulement de trouver la bonne case.</p>
+          <div class="identity-fields">
+            <label for="student-name">Nom et prénom <span>(facultatif)</span></label>
+            <input id="student-name" type="text" maxlength="90" placeholder="Ex. : Amira Ben Salem" autocomplete="name">
+            <label for="student-group">Groupe de TD <span>(facultatif)</span></label>
+            <input id="student-group" type="text" maxlength="50" placeholder="Ex. : GLSI — Groupe 2">
+          </div>
+          <div id="landing-error" class="inline-error" role="alert" hidden></div>
+          <button class="primary-button start-button" id="start-btn" type="button">Commencer l’évaluation <span aria-hidden="true">↗</span></button>
+          <p class="privacy-note">Vos réponses restent enregistrées dans ce navigateur. Aucun nom ni résultat n'est envoyé dans une base de données distante.</p>
+        </article>
+        <aside class="program-panel" aria-labelledby="program-heading">
+          <div class="section-overline">VOTRE PARCOURS</div>
+          <h2 id="program-heading">Quatre compétences, un fil conducteur.</h2>
+          <ol class="program-list">
+            <li><span class="program-num">01</span><span><strong>Comprendre les relations</strong><small>Jointures SQL, collections et identifiants</small></span><span class="program-time">≈ 5 min</span></li>
+            <li><span class="program-num">02</span><span><strong>Choisir une modélisation</strong><small>Embedding, Referencing et justification</small></span><span class="program-time">≈ 8 min</span></li>
+            <li><span class="program-num">03</span><span><strong>Interroger MongoDB</strong><small>Filtre, tri et index composé</small></span><span class="program-time">≈ 9 min</span></li>
+            <li><span class="program-num">04</span><span><strong>Construire une solution fiable</strong><small>Intégrité et choix d’architecture</small></span><span class="program-time">≈ 6 min</span></li>
+          </ol>
+          <div class="program-note"><span class="tiny-icon" aria-hidden="true">i</span><p>Les réponses écrites sont corrigées par critères explicites. Une formulation différente mais juste peut nécessiter une validation humaine.</p></div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="quiz-screen" class="quiz-screen shell" aria-labelledby="quiz-title" hidden>
+      <div class="quiz-topline">
+        <div><div class="section-overline">ATELIER DE COMPRÉHENSION</div><h1 id="quiz-title">Relations et jointures <span>/ MongoDB</span></h1></div>
+        <div class="timer-card" id="timer-card" aria-label="Temps restant"><span class="timer-icon" aria-hidden="true">◷</span><div><small>Temps restant</small><strong id="time-left">30:00</strong></div></div>
+      </div>
+      <div class="overall-progress"><span id="progress-label">0 / 12 questions corrigées</span><span id="score-label">0 / 20 points</span><div class="progress-track"><div id="progress-fill"></div></div></div>
+      <div class="quiz-layout">
+        <aside class="quiz-sidebar">
+          <div class="sidebar-head"><div class="section-overline">NAVIGATION</div><strong>Votre progression</strong><small>Sélectionnez une question pour y revenir.</small></div>
+          <div id="question-nav" class="question-nav" aria-label="Accès aux questions"></div>
+          <div class="sidebar-bottom"><span class="status-indicator"></span><span id="autosave-status">Avancement sauvegardé localement</span></div>
+        </aside>
+        <article class="question-panel" id="question-panel" aria-live="polite" aria-atomic="false"></article>
+      </div>
+      <div class="quiz-below"><p>Une question peut être laissée de côté et revisitée plus tard. Après validation, la correction reste visible.</p><button class="link-button" id="finish-early" type="button">Terminer et consulter mon bilan ↗</button></div>
+    </section>
+
+    <section id="results-screen" class="results-screen shell" hidden aria-labelledby="results-heading">
+      <div class="results-heading"><div class="section-overline">BILAN DE LA SÉANCE</div><h1 id="results-heading">Ce que vous savez déjà.<br><em>Ce que vous pouvez consolider.</em></h1><p id="result-message"></p></div>
+      <div class="result-grid"><div class="result-score"><span>VOTRE RÉSULTAT</span><div><strong id="final-score">0</strong><small>/ 20</small></div><p id="score-caption"></p></div><div class="result-details"><h2>Lecture de votre progression</h2><div id="section-scores"></div><p>Les réponses non validées comptent 0 point. Les réponses écrites sont évaluées par critères et peuvent nécessiter une vérification de l'enseignante.</p></div></div>
+      <div class="result-actions"><button id="download-report" class="primary-button" type="button">Exporter mon bilan <span aria-hidden="true">↗</span></button><button id="print-report" class="secondary-button" type="button">Imprimer le bilan</button><button id="restart-btn" class="secondary-button" type="button">Nouvelle tentative</button></div>
+      <h2 class="review-heading">Retour sur les 12 questions</h2><div id="review-list" class="review-list"></div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="shell footer-inner"><p>© ISIMA · Module Big Data · Licence IoT 1 GLSI · 2026–2027</p><a href="https://www.doyoubuzz.com/takwa-ben-aicha-gder" target="_blank" rel="noopener noreferrer">Dr. Ing. Takwa BEN AÏCHA GADER <span aria-hidden="true">↗</span></a></div></footer>
+  <div id="toast" class="toast" aria-live="polite" hidden></div>
+</body>
+</html>
